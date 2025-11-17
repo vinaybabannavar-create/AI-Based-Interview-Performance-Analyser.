@@ -1,0 +1,97 @@
+/* Global */
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f0f4ff, #fef6ff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* Centers everything horizontally */
+}
+
+/* Navbar */
+header {
+  width: 100%;
+}
+
+header .nav {
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  color: #fff;
+  padding: 12px 18px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center; /* Center nav items */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+header .nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 12px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+header .nav a:hover {
+  color: #ffe680;
+  transform: scale(1.05);
+}
+
+/* Main (Centered Box) */
+main {
+  padding: 25px;
+  margin-top: 20px;
+  width: 90%;
+  max-width: 600px;     /* Content nicely centered in a card-size area */
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  text-align: center;   /* Center text inside */
+}
+
+/* Buttons */
+button {
+  padding: 10px 16px;
+  background: linear-gradient(90deg, #ff6a00, #ee0979);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+}
+
+/* Flash messages */
+.flash {
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  animation: fadeIn 0.5s ease;
+  text-align: center;
+}
+
+.flash.error {
+  background: #ffe0e7;
+  color: #b5002c;
+  border-left: 6px solid #ff004c;
+}
+
+.flash.success {
+  background: #e9ffef;
+  color: #087f23;
+  border-left: 6px solid #28c76f;
+}
+
+/* Smooth animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}

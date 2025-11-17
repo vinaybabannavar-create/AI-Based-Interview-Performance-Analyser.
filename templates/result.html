@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Interview Report{% endblock %}
+
+{% block content %}
+
+<h2>Interview Analysis Report</h2>
+
+<!-- ===================== FACE METRICS ===================== -->
+<h3>Face Metrics</h3>
+<ul>
+    <li><strong>Blink Count:</strong> {{ report.face.blink_count }}</li>
+    <li><strong>Eye Contact:</strong> {{ report.face.eye_contact_percent }}%</li>
+    <li><strong>Attention:</strong> {{ report.face.estimated_attention_percent }}%</li>
+
+    <li><strong>Emotions:</strong></li>
+    <ul>
+        {% for emotion, count in report.face.emotion_counts.items() %}
+            <li>{{ emotion }}: {{ count }}</li>
+        {% endfor %}
+    </ul>
+</ul>
+
+<!-- ===================== AUDIO METRICS ===================== -->
+<h3>Audio Metrics</h3>
+<ul>
+    <li><strong>Avg Energy:</strong> {{ report.audio.avg_energy }}</li>
+    <li><strong>Avg ZCR:</strong> {{ report.audio.avg_zcr }}</li>
+    <li><strong>Speech Duration:</strong> {{ report.audio.speech_duration }}s</li>
+    <li><strong>Filler Words:</strong> {{ report.audio.filler_word_count }}</li>
+    <li><strong>Hesitations:</strong> {{ report.audio.hesitation_count }}</li>
+</ul>
+
+<!-- ===================== NLP METRICS ===================== -->
+<h3>NLP Metrics</h3>
+<ul>
+    <li><strong>Word Count:</strong> {{ report.nlp.word_count }}</li>
+
+    <li><strong>Keywords Found:</strong>
+        {% if report.nlp.found_keywords %}
+            {{ report.nlp.found_keywords | join(", ") }}
+        {% else %}
+            None
+        {% endif %}
+    </li>
+
+    <li><strong>Final Quality Score:</strong> {{ report.nlp.final_quality_score }}</li>
+</ul>
+
+<!-- ===================== FINAL SCORE ===================== -->
+<h3>Final Score</h3>
+<p style="font-size: 20px;"><strong>{{ report.final_score }}</strong></p>
+
+<br>
+
+<!-- DOWNLOAD ONLY PDF -->
+<a href="{{ url_for('results_file', filename='report_user' ~ session.user_id ~ '.pdf') }}" class="btn">
+    Download PDF Report
+</a>
+
+<br><br>
+
+<a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+
+{% endblock %}

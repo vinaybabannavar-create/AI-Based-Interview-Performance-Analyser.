@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Upload Interview{% endblock %}
+{% block content %}
+<h2>Upload Interview Video</h2>
+<form method="POST" enctype="multipart/form-data">
+  <label>Video file</label><br>
+  <input type="file" name="video" accept="video/*" required><br><br>
+  <label>Optional: Paste transcript (ASR) for NLP checks</label><br>
+  <textarea name="transcript" rows="4" cols="60" placeholder="Type or paste transcript of answers (optional)"></textarea><br><br>
+  <button type="submit">Upload & Analyze</button>
+</form>
+{% endblock %}
